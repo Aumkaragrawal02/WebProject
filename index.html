@@ -4,88 +4,112 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aumkar | Portfolio</title>
+  <meta name="description" content="Portfolio of Aumkar, BTech CSE student at Indus University.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --ink: #14213d;
-      --paper: #f7f5f0;
-      --accent: #0f766e;
-      --accent-dark: #0b5a54;
-      --muted: #5b6475;
-      --card: #ffffff;
-    }
-    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
-    body { font-family: 'Source Serif 4', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
-    h1, h2, h3, h4, h5, .navbar-brand, .btn, .nav-link { font-family: 'Space Grotesk', Arial, sans-serif; }
-    section { padding: 4rem 0; }
-    .section-title { font-weight: 700; margin-bottom: 2rem; font-size: 1.8rem; }
-    .navbar { background: var(--ink); }
-    .navbar .nav-link { color: #d6dbe6; }
-    .navbar .nav-link.active, .navbar .nav-link:hover { color: #5eead4; }
-    .btn-accent { background: var(--accent); color: #fff; border: 0; }
-    .btn-accent:hover { background: var(--accent-dark); color: #fff; }
-    .btn-outline-ink { border: 2px solid var(--ink); color: var(--ink); }
-    .btn-outline-ink:hover { background: var(--ink); color: #fff; }
+    :root{--paper:#EEF2F6;--ink:#14213D;--muted:#4B5A75;--blue:#2B5BFF;--btn:#2B5BFF;--btnh:#14213D;--amber:#F2A900;--card:#fff;--line:#C9D3E0;--nav:rgba(238,242,246,.9);--tag:#E3EAFF;--track:#DCE3EE;--foot:#14213D}
+    html{scroll-behavior:smooth;scroll-padding-top:72px}
+    body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.65;transition:background-color .25s,color .25s}
+    h1,h2,h3,h4,.navbar-brand{font-family:'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.02em}
+    .text-muted{color:var(--muted)!important}
+    #scrollBar{position:fixed;top:0;left:0;right:0;height:3px;z-index:1040;background:linear-gradient(90deg,var(--amber),var(--blue));transform:scaleX(0);transform-origin:0 50%}
+    .navbar{background:var(--nav);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);transition:box-shadow .2s}
+    .navbar.scrolled{box-shadow:0 4px 18px rgba(20,33,61,.12)}
+    .navbar-brand{font-weight:800;color:var(--ink)}
+    .nav-link{color:var(--muted);font-weight:500}
+    .nav-link:hover,.nav-link.active{color:var(--blue)}
+    section{padding:4.5rem 0}
+    .section-title{font-weight:800;margin-bottom:.4rem}
+    .section-sub{color:var(--muted);max-width:60ch;margin-bottom:2.2rem}
 
     /* Hero */
-    #home { min-height: 100vh; display: flex; align-items: center; padding-top: 5rem; }
-    .hero-name { font-weight: 700; font-size: 2.4rem; line-height: 1.1; }
-    .role { color: var(--accent); font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 1.25rem; min-height: 2rem; }
-    .cursor { border-right: 2px solid var(--accent); margin-left: 2px; animation: blink 1s steps(1) infinite; }
-    @keyframes blink { 50% { border-color: transparent; } }
-    .avatar { width: 200px; height: 200px; border-radius: 50%; background: var(--ink); color: #5eead4;
-      display: flex; align-items: center; justify-content: center; font: 700 5rem 'Space Grotesk', sans-serif; margin: 0 auto; }
+    #home{padding-top:7.5rem;position:relative;overflow-x:clip}
+    #home::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--line) 1.2px,transparent 1.2px) 0 0/22px 22px;-webkit-mask-image:radial-gradient(ellipse at 75% 40%,#000 15%,transparent 70%);mask-image:radial-gradient(ellipse at 75% 40%,#000 15%,transparent 70%)}
+    #home>.container{position:relative}
+    .hero-name{font-weight:800;line-height:1.02}
+    .hero-role{font:700 1.5rem 'Bricolage Grotesque',sans-serif;color:var(--blue);margin:.9rem 0 0;min-height:1.5em}
+    .hero-lead{color:var(--muted);max-width:52ch}
+    .rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*90ms)}
+    @keyframes rise{to{opacity:1;transform:none}}
+    .btn-main{background:var(--btn);color:#fff;border:2px solid var(--btn);font-weight:500}
+    .btn-main:hover,.btn-main:focus-visible{background:var(--btnh);border-color:var(--btnh);color:#fff}
+    .btn-line{border:2px solid var(--ink);color:var(--ink);font-weight:500;background:transparent}
+    .btn-line:hover{background:var(--ink);color:var(--paper)}
+    .avatar-wrap{position:relative;max-width:320px;margin:0 auto;perspective:800px}
+    .avatar{width:100%;aspect-ratio:1/1;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font:800 6rem 'Bricolage Grotesque',sans-serif;
+      transform:rotateX(calc(var(--ny,0)*-8deg)) rotateY(calc(var(--nx,0)*10deg));
+      box-shadow:calc(14px - var(--nx,0)*10px) calc(14px - var(--ny,0)*10px) 0 var(--amber);transition:transform .15s ease-out,box-shadow .15s ease-out}
+    .chip{position:absolute;padding:.25rem .8rem;border-radius:999px;background:var(--card);border:1px solid var(--line);font-weight:500;font-size:.85rem;white-space:nowrap;box-shadow:0 6px 18px rgba(20,33,61,.14)}
+    .chip::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--amber);margin-right:.45rem}
+    .c1{top:2%;left:-4%;--d:26}.c2{top:16%;right:-6%;--d:-20}.c3{bottom:12%;left:-8%;--d:-30}.c4{bottom:0;right:4%;--d:22}
 
-    /* Cards */
-    .info-card { background: var(--card); border: 1px solid #e3dfd4; border-radius: 10px; padding: 1.4rem; height: 100%; }
-    .info-card h5 { font-weight: 700; }
-    .tag { display: inline-block; background: #e6f2f0; color: var(--accent-dark); border-radius: 6px; padding: .15rem .6rem;
-      font: 500 .85rem 'Space Grotesk', sans-serif; margin: 0 .3rem .4rem 0; }
-    .skill-label { font-family: 'Space Grotesk', sans-serif; font-weight: 500; display: flex; justify-content: space-between; }
-    .progress { height: 10px; background: #e3dfd4; }
-    .progress-bar { background: var(--accent); width: 0; transition: width 1.2s ease; }
+    /* Cards, stats */
+    .card-x{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.5rem;height:100%;position:relative;display:flex;flex-direction:column;transition:border-color .2s,transform .2s,background-color .25s}
+    .card-x h3{font-size:1.25rem;font-weight:700}
+    .card-x a{color:var(--blue);overflow-wrap:anywhere}
+    .project .card-x p{flex-grow:1}
+    .project .card-x:hover{border-color:var(--blue);transform:translateY(-4px)}
+    .tag{display:inline-block;font-size:.8rem;padding:.15rem .6rem;border-radius:999px;background:var(--tag);color:var(--blue);margin:0 .3rem .4rem 0;font-weight:500}
+    .stat{border-left:3px solid var(--amber);padding-left:.8rem}
+    .stat-num{font:800 2rem/1.1 'Bricolage Grotesque',sans-serif}
+    .stat-label{color:var(--muted);font-size:.9rem}
+    .filter-btn,.sk-filter{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.3rem 1rem;font-weight:500;transition:background .2s,color .2s,border-color .2s}
+    .filter-btn:hover,.sk-filter:hover{border-color:var(--blue)}
+    .filter-btn.active,.sk-filter.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+    .timeline{border-left:3px solid var(--blue);padding-left:1.2rem}
+    .timeline-item{margin-bottom:1.4rem;position:relative}
+    .timeline-item::before{content:"";position:absolute;left:-1.78rem;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--amber);border:2px solid var(--ink)}
+    .form-control{border-color:var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+    .form-control:focus{border-color:var(--blue);background:var(--card);color:var(--ink);box-shadow:0 0 0 .2rem rgba(43,91,255,.25)}
+    footer{background:var(--foot);color:#C9D3E0;padding:1.6rem 0}
+    #topBtn{position:fixed;right:18px;bottom:18px;z-index:1030;width:48px;height:48px;border:0;border-radius:50%;padding:3px;background:conic-gradient(var(--amber) var(--p,0%),var(--line) 0);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,transform .25s,visibility .25s}
+    #topBtn.show{opacity:1;visibility:visible;transform:none}
+    #topBtn span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;background:var(--btn);color:#fff;font-size:1.2rem}
+    .skill-card{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;color:var(--ink);transition:border-color .2s,transform .2s}
+    .skill-card:hover{border-color:var(--blue);transform:translateY(-3px)}
+    .sk-top{display:flex;justify-content:space-between;font-weight:500}
+    .sk-pct{color:var(--blue);font-weight:700}
+    .sk-track{display:block;height:10px;background:var(--track);border-radius:999px;margin-top:.6rem;overflow:hidden}
+    .sk-fill{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--amber));border-radius:999px;transition:width 1s ease}
+    .sk-detail{display:block;max-height:0;overflow:hidden;color:var(--muted);font-size:.95rem;transition:max-height .35s ease,margin-top .35s ease}
+    .skill-card.open{border-color:var(--blue)}
+    .skill-card.open .sk-detail{max-height:120px;margin-top:.7rem}
+    .modal-content{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px}
+    .modal-header,.modal-footer{border-color:var(--line)}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 
-    footer { background: var(--ink); color: #d6dbe6; padding: 1.5rem 0; }
-    #toTop { position: fixed; right: 18px; bottom: 18px; display: none; z-index: 50; }
-    #deviceBadge { position: fixed; left: 12px; bottom: 12px; z-index: 50; background: var(--accent); color: #fff;
-      font: 500 .8rem 'Space Grotesk', sans-serif; padding: .25rem .7rem; border-radius: 20px; }
-
-    /* ===== TABLET: 768px - 991px ===== */
-    @media (min-width: 768px) {
-      section { padding: 5rem 0; }
-      .hero-name { font-size: 3.2rem; }
-      .avatar { width: 240px; height: 240px; font-size: 6rem; }
+    /* Mobile < 768, tablet 768-991, PC 992+ */
+    @media (max-width:767.98px){
+      section{padding:3rem 0}
+      #home,.hero-actions{text-align:center}#home{padding-top:6rem}
+      .hero-lead{margin-inline:auto}
+      .hero-name{font-size:2.5rem}
+      .avatar-wrap{max-width:200px;margin-bottom:2rem}
+      .avatar{font-size:4rem;box-shadow:calc(8px - var(--nx,0)*6px) calc(8px - var(--ny,0)*6px) 0 var(--amber)}
+      .hero-actions .btn{width:100%;margin-bottom:.6rem}
     }
-
-    /* ===== PC: 992px and above ===== */
-    @media (min-width: 992px) {
-      .hero-name { font-size: 4rem; }
-      .avatar { width: 300px; height: 300px; font-size: 7.5rem; margin: 0 0 0 auto; }
-      .section-title { font-size: 2.2rem; }
+    @media (max-width:575.98px){.chip{display:none}.hero-role{min-height:3em}}
+    @media (min-width:768px) and (max-width:991.98px){
+      #home{text-align:center}.hero-lead{margin-inline:auto}
+      .hero-name{font-size:3.4rem}
+      .avatar-wrap{max-width:240px;margin-bottom:2rem}.avatar{font-size:4.6rem}
     }
-
-    /* ===== MOBILE: below 768px ===== */
-    @media (max-width: 767.98px) {
-      #home { text-align: center; }
-      #home .btn { width: 100%; margin-bottom: .6rem; }
-      .avatar { margin-bottom: 1.5rem; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .progress-bar { transition: none; }
+    @media (min-width:992px){.hero-name{font-size:4.6rem}#home{min-height:100vh;display:flex;align-items:center}}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{transition:none!important;animation:none!important}
+      .rise{opacity:1;transform:none}
     }
   </style>
 </head>
 <body>
+<div id="scrollBar" aria-hidden="true"></div>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#home">Aumkar Agrawal</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
@@ -99,149 +123,172 @@
   </div>
 </nav>
 
-<!-- HOME -->
-<section id="home">
+<header id="home">
   <div class="container">
     <div class="row align-items-center g-4">
       <div class="col-12 col-lg-7 order-2 order-lg-1">
-        <p class="mb-1 text-secondary">Hello, I'm</p>
-        <h1 class="hero-name">Aumkar Agrawal</h1>
-        <p class="role"><span id="typed"></span><span class="cursor">&nbsp;</span></p>
-        <p class="mb-4">BTech Computer Science student building web apps and AI projects. I like turning ideas into working software.</p>
-        <a href="#projects" class="btn btn-accent me-md-2">View my projects</a>
-        <a href="#contact" class="btn btn-outline-ink">Contact me</a>
+        <h1 class="hero-name rise" style="--i:0">Hi, I'm Aumkar Agrawal.</h1>
+        <p class="hero-role rise" style="--i:1">I build web apps and AI tools.</p>
+        <p class="hero-lead fs-5 mt-3 rise" style="--i:2">A BTech Computer Science student at Indus University who builds web apps and AI tools, from classroom labs to placement-ready projects.</p>
+        <div class="hero-actions mt-4 rise" style="--i:3">
+          <a href="#projects" class="btn btn-main btn-lg me-lg-2">View my projects</a>
+          <a href="#contact" class="btn btn-line btn-lg">Contact me</a>
+        </div>
       </div>
       <div class="col-12 col-lg-5 order-1 order-lg-2">
-        <div class="avatar" aria-label="Aumkar's initial">A</div>
+        <div class="avatar-wrap rise" style="--i:1" id="avatarWrap">
+          <div class="avatar" role="img" aria-label="Initial A">A</div>
+          <span class="chip c1" aria-hidden="true">React</span><span class="chip c2" aria-hidden="true">Python</span>
+          <span class="chip c3" aria-hidden="true">Node.js</span><span class="chip c4" aria-hidden="true">MongoDB</span>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</header>
 
-<!-- ABOUT -->
-<section id="about" style="background:#fff;">
+<section id="about">
   <div class="container">
     <h2 class="section-title">About me</h2>
+    <p class="section-sub">Who I am and what I study.</p>
     <div class="row g-4">
-      <div class="col-12 col-md-7">
-        <p>I am a BTech Computer Science and Engineering student at Indus University. My coursework covers data structures, algorithms, computer networks, microprocessor programming, Python and web development.</p>
-        <p>I build projects for practical labs and for my placement portfolio, and I enjoy working on AI-based tools such as chatbots and voice assistants.</p>
+      <div class="col-12 col-md-12 col-lg-7">
+        <p>I am a BTech Computer Science and Engineering student at Indus University (IITE). My coursework covers computer networks, data structures, algorithms, microprocessor programming, Python and web development.</p>
+        <p>I like turning course concepts into working projects. My main project is CampusGPT, an AI-powered platform for college life, and I am also building an offline voice assistant for my own PC.</p>
+        <div class="row g-3 mt-2" id="stats">
+          <div class="col-4"><div class="stat"><div class="stat-num" data-stat="projects">0</div><div class="stat-label">Projects</div></div></div>
+          <div class="col-4"><div class="stat"><div class="stat-num" data-stat="skills">0</div><div class="stat-label">Skills tracked</div></div></div>
+          <div class="col-4"><div class="stat"><div class="stat-num" data-stat="tech">0</div><div class="stat-label">Technologies used</div></div></div>
+        </div>
       </div>
-      <div class="col-12 col-md-5">
-        <div class="info-card">
-          <h5>Quick facts</h5>
-          <p class="mb-1"><strong>Degree:</strong> BTech CSE</p>
-          <p class="mb-1"><strong>University:</strong> Indus University</p>
-          <p class="mb-0"><strong>Interests:</strong> Web, AI, Python</p>
+      <div class="col-12 col-md-6 col-lg-5">
+        <div class="card-x">
+          <h3>Quick facts</h3>
+          <ul class="list-unstyled mb-0">
+            <li><strong>Degree:</strong> BTech, Computer Science and Engineering</li>
+            <li><strong>University:</strong> Indus University (IITE)</li>
+            <li><strong>Focus:</strong> Web development and AI tools</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="container">
     <h2 class="section-title">Skills</h2>
-    <div class="row g-4">
-      <div class="col-12 col-md-6">
-        <div class="skill-label mt-2"><span>HTML &amp; CSS</span><span>85%</span></div>
-        <div class="progress"><div class="progress-bar" data-level="85"></div></div>
-        <div class="skill-label mt-3"><span>Bootstrap</span><span>80%</span></div>
-        <div class="progress"><div class="progress-bar" data-level="80"></div></div>
-        <div class="skill-label mt-3"><span>JavaScript</span><span>70%</span></div>
-        <div class="progress"><div class="progress-bar" data-level="70"></div></div>
-      </div>
-      <div class="col-12 col-md-6">
-        <div class="skill-label mt-2"><span>Python</span><span>80%</span></div>
-        <div class="progress"><div class="progress-bar" data-level="80"></div></div>
-        <div class="skill-label mt-3"><span>Data Structures &amp; Algorithms</span><span>75%</span></div>
-        <div class="progress"><div class="progress-bar" data-level="75"></div></div>
-        <div class="skill-label mt-3"><span>Computer Networks</span><span>70%</span></div>
-        <div class="progress"><div class="progress-bar" data-level="70"></div></div>
-      </div>
+    <p class="section-sub">Tap a skill to see where I used it. Bars are my own self-assessment.</p>
+    <div class="mb-4 d-flex flex-wrap gap-2" id="skillFilters">
+      <button class="sk-filter active" data-cat="all" aria-pressed="true">All</button>
+      <button class="sk-filter" data-cat="frontend" aria-pressed="false">Frontend</button>
+      <button class="sk-filter" data-cat="backend" aria-pressed="false">Backend</button>
+      <button class="sk-filter" data-cat="core" aria-pressed="false">Core CS</button>
     </div>
+    <div class="row g-3" id="skillList"></div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" style="background:#fff;">
+<section id="projects">
   <div class="container">
     <h2 class="section-title">Projects</h2>
-    <div class="row g-4">
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="info-card">
-          <h5>CampusGPT</h5>
-          <p>A full-stack, AI-powered college platform that answers student queries in one place.</p>
-          <span class="tag">AI</span><span class="tag">Full-stack</span>
+    <p class="section-sub">Pick a filter to narrow the list, then open a project for details.</p>
+    <div class="mb-4 d-flex flex-wrap gap-2" id="filters">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+      <button class="filter-btn" data-filter="ai" aria-pressed="false">AI</button>
+    </div>
+    <div class="row g-4" id="projectGrid">
+      <div class="col-12 col-md-6 col-lg-4 project" data-cat="web ai" data-highlights="AI chatbot|Notes summarizer and quiz generator|Resume analyzer and placement prep tool|Separate faculty and student roles for assignments">
+        <div class="card-x">
+          <h3>CampusGPT</h3>
+          <p>A full-stack AI platform for college life with a chatbot, notes summarizer, quiz generator, resume analyzer and placement prep tool. It has separate faculty and student roles for assignments.</p>
+          <div><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">Groq API</span></div>
+          <div class="pt-2"><button type="button" class="btn btn-line btn-sm project-open stretched-link">View details</button></div>
         </div>
       </div>
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="info-card">
-          <h5>Offline Voice Assistant</h5>
-          <p>A Jarvis-style voice assistant that runs fully offline on a local machine.</p>
-          <span class="tag">Python</span><span class="tag">Speech</span>
+      <div class="col-12 col-md-6 col-lg-4 project" data-cat="ai" data-highlights="Runs fully offline on my laptop|Controls the PC by voice|Monitors security">
+        <div class="card-x">
+          <h3>Offline voice assistant</h3>
+          <p>A voice assistant that runs fully offline on my laptop, focused on PC control and security monitoring.</p>
+          <div><span class="tag">Python</span><span class="tag">Faster-Whisper</span><span class="tag">Ollama</span><span class="tag">Piper TTS</span></div>
+          <div class="pt-2"><button type="button" class="btn btn-line btn-sm project-open stretched-link">View details</button></div>
         </div>
       </div>
-      <div class="col-12 col-md-12 col-lg-4">
-        <div class="info-card">
-          <h5>Portfolio Website</h5>
-          <p>This responsive site, built with HTML, Bootstrap and JavaScript for three device sizes.</p>
-          <span class="tag">HTML</span><span class="tag">Bootstrap</span><span class="tag">JS</span>
+      <div class="col-12 col-md-6 col-lg-4 project" data-cat="web" data-highlights="Layouts for mobile, tablet and PC|Animated skill bars with filters|Project filters and form validation">
+        <div class="card-x">
+          <h3>This portfolio</h3>
+          <p>A responsive single-page site that rearranges itself for mobile, tablet and PC screens.</p>
+          <div><span class="tag">HTML</span><span class="tag">Bootstrap</span><span class="tag">JavaScript</span></div>
+          <div class="pt-2"><button type="button" class="btn btn-line btn-sm project-open stretched-link">View details</button></div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 project" data-cat="web" data-highlights="Enter a room number to see it pinned on a floor diagram|SVG floor plans traced from the college blueprints|Room data kept in a JSON file|Static site with no backend">
+        <div class="card-x">
+          <h3>Campus room locator</h3>
+          <p>A static website that helps students find a room. Enter a room number and its location is pinned on an SVG floor diagram traced from the actual college blueprints.</p>
+          <div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">JSON</span><span class="tag">SVG</span></div>
+          <div class="pt-2"><button type="button" class="btn btn-line btn-sm project-open stretched-link">View details</button></div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 project" data-cat="web" data-highlights="Add, edit, complete and delete tasks|Filter by all, active or done|Tasks saved in the browser|Responsive layout">
+        <div class="card-x">
+          <h3>Task manager app</h3>
+          <p>A simple to-do web app where you can add, edit, complete and delete tasks, with filters and saved data.</p>
+          <div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span></div>
+          <div class="pt-2"><button type="button" class="btn btn-line btn-sm project-open stretched-link">View details</button></div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 project" data-cat="web" data-highlights="Animated bars for bubble, selection, insertion and merge sort|Adjustable array size and speed|Step-by-step comparison counter">
+        <div class="card-x">
+          <h3>Sorting algorithm visualizer</h3>
+          <p>An interactive page that animates common sorting algorithms so the steps are easy to follow.</p>
+          <div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          <div class="pt-2"><button type="button" class="btn btn-line btn-sm project-open stretched-link">View details</button></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EDUCATION -->
 <section id="education">
   <div class="container">
     <h2 class="section-title">Education</h2>
+    <p class="section-sub">My academic path so far.</p>
     <div class="row">
       <div class="col-12 col-lg-8">
-        <div class="info-card">
-          <h5>BTech, Computer Science and Engineering</h5>
-          <p class="mb-1">Indus University (IITE)</p>
-          <p class="mb-0 text-secondary">Subjects: Computer Networks, Data Structures, Algorithms, Microprocessor Programming, Python, Web Technology</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3 class="h5 mb-1">BTech, Computer Science and Engineering</h3>
+            <div class="text-muted">Indus University (IITE)</div>
+            <p class="mb-0">Computer networks, data structures, algorithms, microprocessor programming, Python and web technology.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" style="background:#fff;">
+<section id="contact">
   <div class="container">
     <h2 class="section-title">Contact</h2>
+    <p class="section-sub">Send me a message and I will get back to you.</p>
     <div class="row g-4">
       <div class="col-12 col-md-5">
-        <p>Want to work together or ask something? Send a message.</p>
-        <p class="mb-1"><strong>Email:</strong> your-email@example.com</p>
-        <p class="mb-1"><strong>GitHub:</strong> <a href="https://github.com/your-username" target="_blank" rel="noopener">github.com/your-username</a></p>
-        <p class="mb-0"><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener">linkedin.com/in/your-username</a></p>
+        <div class="card-x">
+          <h3>Find me</h3>
+          <!-- TODO: replace these with your real links -->
+          <p class="mb-1">Email: <a id="emailLink" href="mailto:aumkaragrawal.24.cse@iite.indusuni.ac.in">aumkaragrawal.24.cse@iite.indusuni.ac.in</a></p>
+          <button type="button" id="copyEmail" class="btn btn-line btn-sm align-self-start my-2">Copy email</button>
+          <p class="mb-1">GitHub: <a href="https://github.com/Aumkaragrawal02" target="_blank" rel="noopener">https://github.com/Aumkaragrawal02</a></p>
+        </div>
       </div>
       <div class="col-12 col-md-7">
-        <div id="formAlert"></div>
         <form id="contactForm" novalidate>
-          <div class="row g-3">
-            <div class="col-12 col-lg-6">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" required>
-              <div class="invalid-feedback">Enter your name.</div>
-            </div>
-            <div class="col-12 col-lg-6">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" required>
-              <div class="invalid-feedback">Enter a valid email address.</div>
-            </div>
-            <div class="col-12">
-              <label for="msg" class="form-label">Message</label>
-              <textarea class="form-control" id="msg" rows="4" required></textarea>
-              <div class="invalid-feedback">Write a message.</div>
-            </div>
-            <div class="col-12"><button type="submit" class="btn btn-accent">Send message</button></div>
-          </div>
+          <div class="mb-3"><label for="name" class="form-label">Name</label><input type="text" class="form-control" id="name" required><div class="invalid-feedback">Enter your name.</div></div>
+          <div class="mb-3"><label for="email" class="form-label">Email</label><input type="email" class="form-control" id="email" required><div class="invalid-feedback">Enter a valid email address.</div></div>
+          <div class="mb-3"><label for="msg" class="form-label">Message</label><textarea class="form-control" id="msg" rows="4" required minlength="10"></textarea><div class="d-flex justify-content-between"><div class="invalid-feedback">Write at least 10 characters.</div><small id="msgCount" class="text-muted ms-auto">0 / 10 characters minimum</small></div></div>
+          <button type="submit" id="sendBtn" class="btn btn-main">Send message</button>
+          <div id="formOk" class="alert alert-success mt-3 d-none" role="status">Message sent. Thank you!</div>
         </form>
       </div>
     </div>
@@ -249,78 +296,224 @@
 </section>
 
 <footer>
-  <div class="container text-center">
-    <small>&copy; <span id="year"></span> Aumkar. Built with HTML, Bootstrap and JavaScript.</small>
-  </div>
+  <div class="container text-center">&copy; <span id="year"></span> Aumkar. Built with HTML, Bootstrap and JavaScript.</div>
 </footer>
 
-<span id="deviceBadge"></span>
-<button id="toTop" class="btn btn-accent" aria-label="Back to top">Top</button>
+<button id="topBtn" aria-label="Back to top"><span aria-hidden="true">&uarr;</span></button>
+
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="pmTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header"><h2 class="modal-title h4" id="pmTitle"></h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+      <div class="modal-body">
+        <p id="pmDesc"></p>
+        <h3 class="h6">Highlights</h3>
+        <ul id="pmList"></ul>
+        <div id="pmTags"></div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" id="pmPrev" class="btn btn-line btn-sm" aria-label="Previous project">&larr;</button>
+          <small id="pmPos" class="text-muted"></small>
+          <button type="button" id="pmNext" class="btn btn-line btn-sm" aria-label="Next project">&rarr;</button>
+        </div>
+        <a class="btn btn-main btn-sm" href="https://github.com/Aumkaragrawal02" target="_blank" rel="noopener">GitHub profile</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Typing effect
-  const roles = ['BTech CSE Student', 'Web Developer', 'AI Enthusiast'];
-  let r = 0, c = 0, del = false;
-  const typed = document.getElementById('typed');
-  function type() {
-    const word = roles[r];
-    typed.textContent = word.substring(0, c);
-    if (!del && c < word.length) { c++; setTimeout(type, 90); }
-    else if (!del) { del = true; setTimeout(type, 1200); }
-    else if (c > 0) { c--; setTimeout(type, 50); }
-    else { del = false; r = (r + 1) % roles.length; setTimeout(type, 300); }
-  }
-  type();
+(function(){
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
 
-  // Active nav link on scroll
-  const links = document.querySelectorAll('.navbar .nav-link');
-  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
-  function setActive() {
-    const y = window.scrollY + 120;
-    let idx = 0;
-    sections.forEach((s, i) => { if (s.offsetTop <= y) idx = i; });
-    links.forEach((l, i) => l.classList.toggle('active', i === idx));
-    document.getElementById('toTop').style.display = window.scrollY > 400 ? 'block' : 'none';
-  }
-  window.addEventListener('scroll', setActive);
-  setActive();
+  $('#year').textContent = new Date().getFullYear();
 
-  // Close mobile menu after clicking a link
-  links.forEach(l => l.addEventListener('click', () => {
-    const m = document.getElementById('menu');
-    if (m.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(m).hide();
+  // Close mobile menu after tapping a link
+  const menu = $('#menu');
+  $$('#menu .nav-link').forEach(l => l.addEventListener('click', () => {
+    if (menu.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(menu).hide();
   }));
 
-  // Skill bars animate when visible
-  const bars = document.querySelectorAll('.progress-bar');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.style.width = e.target.dataset.level + '%'; io.unobserve(e.target); } });
-  }, { threshold: 0.4 });
-  bars.forEach(b => io.observe(b));
+  // Scrollspy
+  const links = $$('#menu .nav-link');
+  const spy = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  $$('header[id], section[id]').forEach(s => spy.observe(s));
 
-  // Device badge: Mobile / Tablet / PC
-  function device() {
-    const w = window.innerWidth;
-    document.getElementById('deviceBadge').textContent = w < 768 ? 'Mobile view' : w < 992 ? 'Tablet view' : 'PC view';
+  // Scroll progress bar, navbar shadow, back-to-top ring
+  const bar = $('#scrollBar'), topBtn = $('#topBtn'), nav = $('.navbar');
+  let ticking = false;
+  function onScroll(){
+    const max = root.scrollHeight - root.clientHeight;
+    const p = max > 0 ? root.scrollTop / max : 0;
+    bar.style.transform = 'scaleX(' + p + ')';
+    topBtn.style.setProperty('--p', (p * 100).toFixed(1) + '%');
+    topBtn.classList.toggle('show', root.scrollTop > 400);
+    nav.classList.toggle('scrolled', root.scrollTop > 10);
+    ticking = false;
   }
-  window.addEventListener('resize', device);
-  device();
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+  topBtn.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
 
-  // Form validation
-  document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    this.classList.add('was-validated');
-    if (this.checkValidity()) {
-      document.getElementById('formAlert').innerHTML =
-        '<div class="alert alert-success">Message sent. Thank you for reaching out.</div>';
-      this.reset();
-      this.classList.remove('was-validated');
-    }
+  // Hero: avatar and chips follow the cursor
+  const hero = $('#home'), wrap = $('#avatarWrap');
+  if (!reduce && matchMedia('(pointer: fine)').matches) {
+    let raf = null, nx = 0, ny = 0;
+    const clamp = v => Math.max(-1, Math.min(1, v));
+    hero.addEventListener('pointermove', e => {
+      const r = wrap.getBoundingClientRect();
+      nx = clamp((e.clientX - r.left - r.width / 2) / (innerWidth / 2));
+      ny = clamp((e.clientY - r.top - r.height / 2) / (innerHeight / 2));
+      if (!raf) raf = requestAnimationFrame(() => {
+        wrap.style.setProperty('--nx', nx.toFixed(3)); wrap.style.setProperty('--ny', ny.toFixed(3)); raf = null;
+      });
+    });
+    hero.addEventListener('pointerleave', () => { wrap.style.setProperty('--nx', 0); wrap.style.setProperty('--ny', 0); });
+  }
+
+  // Skills data
+  const skills = [
+    {name:'HTML and CSS', level:85, cat:'frontend', note:'Used in this portfolio and my web technology labs.'},
+    {name:'JavaScript', level:75, cat:'frontend', note:'Powers the filters, form validation and animations on this site.'},
+    {name:'Bootstrap', level:80, cat:'frontend', note:'Grid and components behind this responsive layout.'},
+    {name:'React', level:65, cat:'frontend', note:'Frontend of CampusGPT.'},
+    {name:'Node.js and Express', level:65, cat:'backend', note:'Backend and role-based APIs in CampusGPT.'},
+    {name:'MongoDB', level:60, cat:'backend', note:'Database for CampusGPT on MongoDB Atlas.'},
+    {name:'Python', level:80, cat:'core', note:'Coursework and my offline voice assistant.'},
+    {name:'Data structures and algorithms', level:70, cat:'core', note:'Core coursework in my BTech CSE degree.'}
+  ];
+
+  // Animated counters in About (numbers come from the page's own data)
+  const projects = $$('.project');
+  const counts = {
+    projects: projects.length,
+    skills: skills.length,
+    tech: new Set($$('.project .tag').map(t => t.textContent)).size
+  };
+  function countUp(el, target){
+    if (reduce) { el.textContent = target; return; }
+    const t0 = performance.now();
+    (function step(now){
+      const p = Math.min((now - t0) / 1000, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  new IntersectionObserver(([en], obs) => {
+    if (en.isIntersecting) { $$('[data-stat]').forEach(el => countUp(el, counts[el.dataset.stat])); obs.disconnect(); }
+  }, { threshold: .4 }).observe($('#stats'));
+
+  // Skills
+  const skillList = $('#skillList');
+  let skillsPlayed = false;
+  function fillSkill(card){
+    const level = +card.dataset.level, pct = $('.sk-pct', card);
+    $('.sk-fill', card).style.width = level + '%';
+    if (reduce) { pct.textContent = level + '%'; return; }
+    const t0 = performance.now();
+    (function step(now){
+      const p = Math.min((now - t0) / 900, 1);
+      pct.textContent = Math.round(level * p) + '%';
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  function renderSkills(cat){
+    skillList.innerHTML = '';
+    skills.filter(s => cat === 'all' || s.cat === cat).forEach(s => {
+      const col = document.createElement('div');
+      col.className = 'col-12 col-md-6';
+      col.innerHTML =
+        '<button type="button" class="skill-card" data-level="' + s.level + '" aria-expanded="false">' +
+        '<span class="sk-top"><span>' + s.name + '</span><span class="sk-pct">0%</span></span>' +
+        '<span class="sk-track"><span class="sk-fill"></span></span>' +
+        '<span class="sk-detail">' + s.note + '</span></button>';
+      const card = col.firstChild;
+      card.addEventListener('click', () => card.setAttribute('aria-expanded', card.classList.toggle('open')));
+      skillList.appendChild(col);
+      if (skillsPlayed) requestAnimationFrame(() => fillSkill(card));
+    });
+  }
+  $$('.sk-filter').forEach(btn => btn.addEventListener('click', () => {
+    $$('.sk-filter').forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-pressed', b === btn); });
+    renderSkills(btn.dataset.cat);
+  }));
+  renderSkills('all');
+  new IntersectionObserver(([en], obs) => {
+    if (en.isIntersecting) { skillsPlayed = true; $$('.skill-card', skillList).forEach(fillSkill); obs.disconnect(); }
+  }, { threshold: .2 }).observe(skillList);
+
+  // Project filter
+  const visible = () => projects.filter(p => !p.classList.contains('d-none'));
+  $$('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
+    $$('.filter-btn').forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-pressed', b === btn); });
+    const f = btn.dataset.filter;
+    projects.forEach(p => {
+      const show = f === 'all' || p.dataset.cat.split(' ').includes(f);
+      p.classList.toggle('d-none', !show);
+      if (show && !reduce) p.animate([{opacity:0, transform:'translateY(10px)'}, {opacity:1, transform:'none'}], {duration:350, easing:'ease-out'});
+    });
+  }));
+
+  // Project details modal with previous / next
+  const modalEl = $('#projectModal');
+  let current = projects[0];
+  function fillModal(){
+    $('#pmTitle').textContent = $('h3', current).textContent;
+    $('#pmDesc').textContent = $('p', current).textContent;
+    const list = $('#pmList'); list.innerHTML = '';
+    current.dataset.highlights.split('|').forEach(t => { const li = document.createElement('li'); li.textContent = t; list.appendChild(li); });
+    const tags = $('#pmTags'); tags.innerHTML = '';
+    $$('.tag', current).forEach(t => tags.appendChild(t.cloneNode(true)));
+    const v = visible();
+    $('#pmPos').textContent = (v.indexOf(current) + 1) + ' of ' + v.length;
+    $('#pmPrev').disabled = $('#pmNext').disabled = v.length < 2;
+  }
+  function step(d){ const v = visible(); current = v[(v.indexOf(current) + d + v.length) % v.length]; fillModal(); }
+  $$('.project-open').forEach(b => b.addEventListener('click', () => {
+    current = b.closest('.project'); fillModal(); bootstrap.Modal.getOrCreateInstance(modalEl).show();
+  }));
+  $('#pmPrev').addEventListener('click', () => step(-1));
+  $('#pmNext').addEventListener('click', () => step(1));
+
+  // Copy email
+  const copyBtn = $('#copyEmail');
+  copyBtn.addEventListener('click', () => {
+    const email = $('#emailLink').textContent;
+    const done = ok => { copyBtn.textContent = ok ? 'Copied' : 'Press Ctrl+C on the address'; setTimeout(() => copyBtn.textContent = 'Copy email', 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(() => done(true), () => done(false));
+    else done(false);
   });
 
-  document.getElementById('toTop').addEventListener('click', () => window.scrollTo({ top: 0 }));
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // Contact form: live validation, character counter, simulated send
+  const form = $('#contactForm'), msg = $('#msg'), sendBtn = $('#sendBtn'), okBox = $('#formOk');
+  const fields = $$('.form-control', form);
+  const mark = i => { const v = i.checkValidity(); i.classList.toggle('is-invalid', !v); i.classList.toggle('is-valid', v); return v; };
+  function updateMsgCount(){ const n = msg.value.trim().length; $('#msgCount').textContent = n < 10 ? n + ' / 10 characters minimum' : n + ' characters'; }
+  msg.addEventListener('input', updateMsgCount);
+  fields.forEach(i => {
+    i.addEventListener('blur', () => { if (i.value) mark(i); });
+    i.addEventListener('input', () => { if (i.classList.contains('is-invalid')) mark(i); });
+  });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    okBox.classList.add('d-none');
+    const results = fields.map(mark);
+    if (results.includes(false)) { fields[results.indexOf(false)].focus(); return; }
+    sendBtn.disabled = true; sendBtn.textContent = 'Sending...';
+    setTimeout(() => {
+      form.reset(); fields.forEach(i => i.classList.remove('is-valid')); updateMsgCount();
+      sendBtn.disabled = false; sendBtn.textContent = 'Send message';
+      okBox.classList.remove('d-none');
+    }, 900);
+  });
+})();
 </script>
 </body>
 </html>
